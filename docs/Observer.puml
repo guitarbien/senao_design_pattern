@@ -1,0 +1,39 @@
+@startuml
+
+interface ITimer {
+    +onTick()
+    +getLastRecordTime()
+}
+
+abstract class AbstractTimerSubject {
+    -observerList
+    #currentTime
+    +attach()
+    +detach()
+    +notify()
+    +onTick()
+    +getLastRecordTime();
+}
+
+class Clock {
+    +MAX_RECORDING_TIME
+    +onTick()
+}
+
+interface ITimerObserver {
+    +update()
+}
+
+class DigitalClock {
+    +update()
+}
+
+ITimer <|.. AbstractTimerSubject
+
+AbstractTimerSubject <|-- Clock
+
+ITimerObserver <|.. DigitalClock
+
+ITimer .> ITimerObserver
+
+@enduml
