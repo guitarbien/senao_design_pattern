@@ -18,7 +18,7 @@ class ObserverTest extends TestCase
         /** @var DigitalClock $digitalClock */
         $digitalClock = Mockery::spy(DigitalClock::class)->makePartial();
 
-        $clock = new Clock();
+        $clock = new Clock('refreshTime');
         $clock->attach($digitalClock);
 
         $counter = 0;

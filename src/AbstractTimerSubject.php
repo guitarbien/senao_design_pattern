@@ -16,6 +16,18 @@ abstract class AbstractTimerSubject implements ITimer
     /** @var string */
     protected $currentTime;
 
+    /** @var string */
+    protected $channel;
+
+    /**
+     * Clock constructor.
+     * @param $channel
+     */
+    public function __construct(string $channel)
+    {
+        $this->channel = $channel;
+    }
+
     /**
      * Attach an SplObserver
      * @param ITimerObserver $observer
@@ -24,8 +36,8 @@ abstract class AbstractTimerSubject implements ITimer
     {
         $key = get_class($observer);
 
-        if (!isset($this->observerList[$key])) {
-            $this->observerList[$key] = $observer;
+        if (!isset($this->observerList[$this->channel][$key])) {
+            $this->observerList[$this->channel][$key] = $observer;
         }
     }
 
@@ -35,7 +47,7 @@ abstract class AbstractTimerSubject implements ITimer
      */
     public function detach(ITimerObserver $observer): void
     {
-        unset($this->observerList[get_class($observer)]);
+        unset($this->observerList[$this->channel][get_class($observer)]);
     }
 
     /**
@@ -43,8 +55,9 @@ abstract class AbstractTimerSubject implements ITimer
      */
     public function notify(): void
     {
-        foreach ($this->observerList as $subscriber) {
+        foreach ($this->observerList[$this->channel] as $subscriber) {
             try {
+                /** @var ITimerObserver $subscriber */
                 $subscriber->update($this);
             } catch (Throwable $e) {
                 // prevent notify getting blocked
