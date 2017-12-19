@@ -14,8 +14,6 @@ class DigitalClock implements ITimerObserver
      */
     public function update(AbstractTimerSubject $subject): void
     {
-        // var_dump($subject);
-        // exit;
         echo $subject->getLastRecordTime();
     }
 }

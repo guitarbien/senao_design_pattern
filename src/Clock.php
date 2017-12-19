@@ -17,19 +17,7 @@ class Clock extends AbstractTimerSubject
      */
     public function onTick(): void
     {
-        $counter = 1;
-
-        while (true) {
-            if ($counter >= self::MAX_RECORDING_TIME) {
-                break;
-            }
-
-            $this->currentTime = date('H:i:s');
-            $this->notify();
-
-            $counter += 1;
-
-            sleep(1);
-        }
+        $this->currentTime = date('H:i:s');
+        $this->notify();
     }
 }

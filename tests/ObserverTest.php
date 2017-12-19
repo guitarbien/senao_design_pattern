@@ -20,10 +20,21 @@ class ObserverTest extends TestCase
 
         $clock = new Clock();
         $clock->attach($digitalClock);
-        $clock->onTick();
+
+        $counter = 0;
 
         // action
-        $clock->notify();
+        while (true) {
+            if ($counter >= Clock::MAX_RECORDING_TIME) {
+                break;
+            }
+
+            // 每秒鐘執行 onTick() 一次
+            $clock->onTick();
+
+            $counter += 1;
+            sleep(1);
+        }
 
         // assert
         $digitalClock->shouldHaveReceived('update')
