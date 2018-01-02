@@ -4,8 +4,8 @@ use PHPUnit\Framework\TestCase;
 use App\computer\builder\PCBuilder;
 use App\computer\builder\LaptopBuilder;
 use App\computer\Director;
-use App\computer\product\PC;
-use App\computer\product\Laptop;
+use App\computer\PC;
+use App\computer\Laptop;
 
 /**
  * Class BuilderTest

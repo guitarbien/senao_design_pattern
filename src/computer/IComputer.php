@@ -1,12 +1,12 @@
 <?php
 
-namespace App\computer\product;
+namespace App\computer;
 
 /**
  * Class IProduct
  * @package App\computer\product
  */
-interface IProduct
+interface IComputer
 {
 
 }

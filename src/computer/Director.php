@@ -3,8 +3,6 @@
 namespace App\computer;
 
 use App\computer\builder\IBuilder;
-use App\computer\product\IProduct;
-use App\computer\product\PC;
 
 /**
  * Class Director
