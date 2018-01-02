@@ -1,0 +1,100 @@
+@startuml
+
+'--------------
+' Client (test)
+'--------------
+class BuilderTest {
+    +test_可以打造PC()
+    +test_可以打造laptop()
+}
+BuilderTest -> Director
+
+'--------------
+' Director
+'--------------
+class Director {
+    -builder
+    +__construct()
+    +build()
+}
+Director o-> IBuilder
+
+'--------------
+' builder
+'--------------
+interface IBuilder {
+    +createComputer()
+    +addMotherBoard()
+    +addCpu()
+    +addRam()
+    +addSsd()
+    +getComputer()
+}
+
+class LaptopBuilder {
+    -laptop
+    +createComputer()
+    +addMotherBoard()
+    +addCpu()
+    +addRam()
+    +addSsd()
+    +getComputer()
+}
+
+class PCBuilder {
+    -pc
+    +createComputer()
+    +addMotherBoard()
+    +addCpu()
+    +addRam()
+    +addSsd()
+    +getComputer()
+}
+
+IBuilder <|.. LaptopBuilder
+IBuilder <|.. PCBuilder
+
+'--------------
+' part (spec)
+'--------------
+abstract class AbstractSpec {
+    -spec
+    +__construct()
+    +getSpec()
+}
+class Cpu {
+}
+class Ssd {
+}
+class MotherBoard {
+}
+class Ram {
+}
+AbstractSpec <|-- Cpu
+AbstractSpec <|-- Ssd
+AbstractSpec <|-- MotherBoard
+AbstractSpec <|-- Ram
+
+'--------------------
+' Product (Computer)
+'--------------------
+abstract class AbstractComputer {
+    -data
+    +setPart()
+    +getSpec()
+}
+class Laptop {
+}
+class PC {
+}
+AbstractComputer <|-- Laptop
+AbstractComputer <|-- PC
+
+'--------------------
+' 使用關係
+'--------------------
+IBuilder *-> AbstractComputer
+IBuilder *-> AbstractSpec
+AbstractComputer .> AbstractSpec
+
+@enduml
