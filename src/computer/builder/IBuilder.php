@@ -2,7 +2,7 @@
 
 namespace App\computer\builder;
 
-use App\computer\IComputer;
+use App\computer\AbstractComputer;
 
 /**
  * Class IBuilder
@@ -36,7 +36,7 @@ interface IBuilder
     public function addSsd(): void;
 
     /**
-     * @return IComputer
+     * @return AbstractComputer
      */
-    public function getComputer(): IComputer;
+    public function getComputer(): AbstractComputer;
 }

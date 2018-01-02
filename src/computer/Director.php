@@ -23,9 +23,9 @@ class Director
     }
 
     /**
-     * @return IComputer
+     * @return AbstractComputer
      */
-    public function build(): IComputer
+    public function build(): AbstractComputer
     {
         $this->builder->createComputer();
         $this->builder->addMotherBoard();
