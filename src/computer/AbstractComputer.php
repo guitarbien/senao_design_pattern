@@ -17,6 +17,6 @@ abstract class AbstractComputer
      */
     public function setPart(string $key, $value)
     {
-        $this->data[$key] = $value;
+        $this->data[$key][] = $value;
     }
 }

@@ -32,7 +32,7 @@ class PCBuilder implements IBuilder
      */
     public function addMotherBoard(): void
     {
-        $this->pc->setPart('MotherBoard', new MotherBoard);
+        $this->pc->setPart('MotherBoard', new MotherBoard('超棒主機板型號5566'));
     }
 
     /**
@@ -40,7 +40,8 @@ class PCBuilder implements IBuilder
      */
     public function addCpu(): void
     {
-        $this->pc->setPart('cpu', new Cpu);
+        $this->pc->setPart('cpu', new Cpu('超棒CPU規格'));
+        $this->pc->setPart('cpu', new Cpu('超棒CPU規格'));
     }
 
     /**
@@ -48,7 +49,10 @@ class PCBuilder implements IBuilder
      */
     public function addRam(): void
     {
-        $this->pc->setPart('ram', new Ram);
+        $this->pc->setPart('ram', new Ram('8G'));
+        $this->pc->setPart('ram', new Ram('8G'));
+        $this->pc->setPart('ram', new Ram('8G'));
+        $this->pc->setPart('ram', new Ram('8G'));
     }
 
     /**
@@ -56,7 +60,8 @@ class PCBuilder implements IBuilder
      */
     public function addSsd(): void
     {
-        $this->pc->setPart('ssd', new Ssd);
+        $this->pc->setPart('ssd', new Ssd('128G'));
+        $this->pc->setPart('ssd', new Ssd('128G'));
     }
 
     /**
