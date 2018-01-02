@@ -12,5 +12,8 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "require": {
+        "tightenco/collect": "^5.5"
     }
 }
