@@ -18,7 +18,7 @@ class BuilderTest extends TestCase
         $pcBuilder = new PCBuilder();
 
         // act
-        $pc = (new Director())->build($pcBuilder);
+        $pc = (new Director($pcBuilder))->build();
 
         // assert
         static::assertInstanceOf(PC::class, $pc);
@@ -30,7 +30,7 @@ class BuilderTest extends TestCase
         $laptopBuilder = new LaptopBuilder();
 
         // act
-        $laptop = (new Director())->build($laptopBuilder);
+        $laptop = (new Director($laptopBuilder))->build();
 
         // assert
         $this->assertInstanceOf(Laptop::class, $laptop);

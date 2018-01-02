@@ -12,12 +12,29 @@ use App\computer\product\PC;
  */
 class Director
 {
+    /** @var IBuilder */
+    private $builder;
+
     /**
+     * Director constructor.
      * @param IBuilder $builder
-     * @return IProduct
      */
-    public function build(IBuilder $builder): IProduct
+    public function __construct(IBuilder $builder)
     {
-        return new PC();
+        $this->builder = $builder;
+    }
+
+    /**
+     * @return IComputer
+     */
+    public function build(): IComputer
+    {
+        $this->builder->createComputer();
+        $this->builder->addMotherBoard();
+        $this->builder->addCpu();
+        $this->builder->addRam();
+        $this->builder->addSsd();
+
+        return $this->builder->getComputer();
     }
 }
