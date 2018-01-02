@@ -6,7 +6,7 @@ namespace App\computer\part;
  * Class MotherBoard
  * @package App\computer\part
  */
-class MotherBoard
+class MotherBoard extends AbstractSpec
 {
 
 }

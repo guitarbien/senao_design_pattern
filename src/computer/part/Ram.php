@@ -6,7 +6,7 @@ namespace App\computer\part;
  * Class Ram
  * @package App\computer\part
  */
-class Ram
+class Ram extends AbstractSpec
 {
 
 }
