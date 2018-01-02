@@ -19,4 +19,13 @@ abstract class AbstractSpec
     {
         $this->spec = $spec;
     }
+
+    /**
+     * 回傳規格 (for test assert)
+     * @return string
+     */
+    public function getSpec(): string
+    {
+        return $this->spec;
+    }
 }

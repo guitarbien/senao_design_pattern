@@ -1,5 +1,6 @@
 <?php
 
+use App\computer\part\AbstractSpec;
 use App\computer\part\Cpu;
 use App\computer\part\MotherBoard;
 use App\computer\part\Ram;
@@ -30,6 +31,14 @@ class BuilderTest extends TestCase
         static::assertInstanceOf(Cpu::class, $pc->getSpec()['cpu'][0]);
         static::assertInstanceOf(Ram::class, $pc->getSpec()['ram'][0]);
         static::assertInstanceOf(Ssd::class, $pc->getSpec()['ssd'][0]);
+
+        // assert spec (零件可以安裝很多份)
+        $totalRamSize = collect($pc->getSpec()['ram'])
+                        ->map(function(AbstractSpec $item) {
+                            return (int)$item->getSpec();
+                        })
+                        ->sum();
+        static::assertEquals(32, $totalRamSize);
     }
 
     public function test_可以打造laptop()
