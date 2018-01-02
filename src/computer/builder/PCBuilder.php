@@ -2,7 +2,12 @@
 
 namespace App\computer\builder;
 
-use App\computer\IComputer;
+use App\computer\AbstractComputer;
+use App\computer\PC;
+use App\computer\part\MotherBoard;
+use App\computer\part\Cpu;
+use App\computer\part\Ram;
+use App\computer\part\Ssd;
 
 /**
  * Class PCBuilder
@@ -10,20 +15,24 @@ use App\computer\IComputer;
  */
 class PCBuilder implements IBuilder
 {
+    /** @var PC */
+    private $pc;
+
     /**
      * 建立 Computer 物件
      */
     public function createComputer(): void
     {
-        // TODO: Implement createComputer() method.
+        $this->pc = new PC();
     }
 
     /**
      * 設置 MB
+     * 主機板只有一個
      */
     public function addMotherBoard(): void
     {
-        // TODO: Implement addMotherBoard() method.
+        $this->pc->setPart('MotherBoard', new MotherBoard);
     }
 
     /**
@@ -31,7 +40,7 @@ class PCBuilder implements IBuilder
      */
     public function addCpu(): void
     {
-        // TODO: Implement addCpu() method.
+        $this->pc->setPart('cpu', new Cpu);
     }
 
     /**
@@ -39,7 +48,7 @@ class PCBuilder implements IBuilder
      */
     public function addRam(): void
     {
-        // TODO: Implement addRam() method.
+        $this->pc->setPart('ram', new Ram);
     }
 
     /**
@@ -47,14 +56,14 @@ class PCBuilder implements IBuilder
      */
     public function addSsd(): void
     {
-        // TODO: Implement addSsd() method.
+        $this->pc->setPart('ssd', new Ssd);
     }
 
     /**
-     * @return IComputer
+     * @return AbstractComputer
      */
-    public function getComputer(): IComputer
+    public function getComputer(): AbstractComputer
     {
-        // TODO: Implement getComputer() method.
+        return $this->pc;
     }
 }
