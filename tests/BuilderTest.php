@@ -1,5 +1,9 @@
 <?php
 
+use App\computer\part\Cpu;
+use App\computer\part\MotherBoard;
+use App\computer\part\Ram;
+use App\computer\part\Ssd;
 use PHPUnit\Framework\TestCase;
 use App\computer\builder\PCBuilder;
 use App\computer\builder\LaptopBuilder;
@@ -22,6 +26,10 @@ class BuilderTest extends TestCase
 
         // assert
         static::assertInstanceOf(PC::class, $pc);
+        static::assertInstanceOf(MotherBoard::class, $pc->getSpec()['MotherBoard'][0]);
+        static::assertInstanceOf(Cpu::class, $pc->getSpec()['cpu'][0]);
+        static::assertInstanceOf(Ram::class, $pc->getSpec()['ram'][0]);
+        static::assertInstanceOf(Ssd::class, $pc->getSpec()['ssd'][0]);
     }
 
     public function test_可以打造laptop()

@@ -19,4 +19,13 @@ abstract class AbstractComputer
     {
         $this->data[$key][] = $value;
     }
+
+    /**
+     * 回傳詳細規格 (for test assert)
+     * @return array
+     */
+    public function getSpec(): array
+    {
+        return $this->data;
+    }
 }
