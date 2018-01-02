@@ -21,7 +21,7 @@ class BuilderTest extends TestCase
         $pc = (new Director())->build($pcBuilder);
 
         // assert
-        $this->assertInstanceOf(PC::class, $pc);
+        static::assertInstanceOf(PC::class, $pc);
     }
 
     public function test_可以打造laptop()
