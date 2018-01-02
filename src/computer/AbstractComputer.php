@@ -2,6 +2,8 @@
 
 namespace App\computer;
 
+use App\computer\part\AbstractSpec;
+
 /**
  * Class Computer
  * @package App\computer\product
@@ -13,9 +15,9 @@ abstract class AbstractComputer
 
     /**
      * @param string $key
-     * @param string $value
+     * @param AbstractSpec $value
      */
-    public function setPart(string $key, $value)
+    public function setPart(string $key, AbstractSpec $value)
     {
         $this->data[$key][] = $value;
     }
