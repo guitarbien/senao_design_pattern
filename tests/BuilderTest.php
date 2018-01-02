@@ -41,6 +41,10 @@ class BuilderTest extends TestCase
         $laptop = (new Director($laptopBuilder))->build();
 
         // assert
-        $this->assertInstanceOf(Laptop::class, $laptop);
+        static::assertInstanceOf(Laptop::class, $laptop);
+        static::assertInstanceOf(MotherBoard::class, $laptop->getSpec()['MotherBoard'][0]);
+        static::assertInstanceOf(Cpu::class, $laptop->getSpec()['cpu'][0]);
+        static::assertInstanceOf(Ram::class, $laptop->getSpec()['ram'][0]);
+        static::assertInstanceOf(Ssd::class, $laptop->getSpec()['ssd'][0]);
     }
 }

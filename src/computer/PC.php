@@ -7,4 +7,5 @@ namespace App\computer;
  */
 class PC extends AbstractComputer
 {
+
 }
