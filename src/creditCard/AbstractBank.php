@@ -21,11 +21,15 @@ abstract class AbstractBank implements BankInterface
     }
 
     /**
-     * @param CreditCardDTO $creditCardDTO
+     * 實作各家銀行細節 send auth request
      * @return ResponseDTO
      */
-    protected function sendRequest(CreditCardDTO $creditCardDTO): ResponseDTO
-    {
-        return new ResponseDTO();
-    }
+    abstract public function validate(): ResponseDTO;
+
+    /**
+     * 實作各家銀行解析 response
+     * @param string $response
+     * @return ResponseDTO
+     */
+    abstract protected function responseProcess(string $response): ResponseDTO;
 }
