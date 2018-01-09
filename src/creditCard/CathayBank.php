@@ -3,10 +3,10 @@
 namespace App\creditCard;
 
 /**
- * Class NcccBank
+ * Class CathayBank
  * @package App\creditCard
  */
-class NcccBank extends AbstractBank
+class CathayBank extends AbstractBank
 {
     /**
      * @return ResponseDTO

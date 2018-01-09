@@ -5,7 +5,7 @@ use App\creditCard\CathayBank;
 use PHPUnit\Framework\TestCase;
 use App\creditCard\CreditCardDTO;
 use App\creditCard\BankFactory;
-use App\creditCard\ValidateDTO;
+use App\creditCard\ResponseDTO;
 
 /**
  * Class FactoryTest
@@ -27,7 +27,7 @@ class FactoryTest extends TestCase
 
         // assert
         static::assertInstanceOf(NcccBank::class, $bank);
-        static::assertInstanceOf(ValidateDTO::class, $resultDTO);
+        static::assertInstanceOf(ResponseDTO::class, $resultDTO);
     }
 
     public function test_呼叫國泰驗證信用卡()
@@ -45,6 +45,6 @@ class FactoryTest extends TestCase
 
         // assert
         static::assertInstanceOf(CathayBank::class, $bank);
-        static::assertInstanceOf(ValidateDTO::class, $resultDTO);
+        static::assertInstanceOf(ResponseDTO::class, $resultDTO);
     }
 }

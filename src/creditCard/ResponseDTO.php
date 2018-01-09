@@ -3,10 +3,10 @@
 namespace App\creditCard;
 
 /**
- * Class ValidateDTO
+ * Class ResponseDTO
  * @package App\creditCard
  */
-class ValidateDTO
+class ResponseDTO
 {
 
 }

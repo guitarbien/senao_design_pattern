@@ -9,7 +9,7 @@ namespace App\creditCard;
 interface BankInterface
 {
     /**
-     * @return ValidateDTO
+     * @return ResponseDTO
      */
-    public function validate(): ValidateDTO;
+    public function validate(): ResponseDTO;
 }
