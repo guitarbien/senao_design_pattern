@@ -8,7 +8,12 @@ namespace App\creditCard;
  */
 class BankFactory
 {
-    public static function create($creditCardDTO)
+    /**
+     * @param $creditCardDTO
+     * @return BankInterface
+     */
+    public static function create($creditCardDTO): BankInterface
     {
+        return new NcccBank();
     }
 }
