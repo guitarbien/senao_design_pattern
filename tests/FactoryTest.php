@@ -10,12 +10,28 @@ use App\creditCard\ValidateDTO;
  */
 class FactoryTest extends TestCase
 {
-    public function test_呼叫NCCC取得驗證信用卡()
+    public function test_呼叫NCCC驗證信用卡()
     {
         // arrange
         $creditCardDTO = new CreditCardDTO();
 
         $creditCardDTO->cardNo    = '1111222233334444';
+        $creditCardDTO->cvc       = '567';
+        $creditCardDTO->validThru = '1125';
+
+        // act
+        $resultDTO = BankFactory::create($creditCardDTO)->validate();
+
+        // assert
+        static::assertInstanceOf(ValidateDTO::class, $resultDTO);
+    }
+
+    public function test_呼叫國泰驗證信用卡()
+    {
+        // arrange
+        $creditCardDTO = new CreditCardDTO();
+
+        $creditCardDTO->cardNo    = '5555666677778888';
         $creditCardDTO->cvc       = '567';
         $creditCardDTO->validThru = '1125';
 
