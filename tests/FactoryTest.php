@@ -1,5 +1,6 @@
 <?php
 
+use App\creditCard\CtbcBank;
 use App\creditCard\NcccBank;
 use App\creditCard\CathayBank;
 use PHPUnit\Framework\TestCase;

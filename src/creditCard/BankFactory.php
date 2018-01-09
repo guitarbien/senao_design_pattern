@@ -32,6 +32,7 @@ class BankFactory
         $bankMapping = [
             '111122' => new Bank(Bank::NCCC),
             '555566' => new Bank(Bank::CATHAY),
+            '999988' => new Bank(Bank::CTBC),
             // and so on ...
         ];
 
