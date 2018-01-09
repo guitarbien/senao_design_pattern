@@ -66,4 +66,21 @@ class FactoryTest extends TestCase
         static::assertInstanceOf(CtbcBank::class, $bank);
         static::assertInstanceOf(ResponseDTO::class, $resultDTO);
     }
+
+    public function test_查無發卡行會拋例外()
+    {
+        // assert
+        static::expectException(Exception::class);
+
+        // arrange
+        $creditCardDTO = new CreditCardDTO();
+
+        $creditCardDTO->cardNo    = 'abcd1234';
+        $creditCardDTO->cvc       = '567';
+        $creditCardDTO->validThru = '1125';
+
+        // act
+        $bank      = BankFactory::create($creditCardDTO);
+        $bank->validate();
+    }
 }
