@@ -1,5 +1,7 @@
 <?php
 
+use App\creditCard\NcccBank;
+use App\creditCard\CathayBank;
 use PHPUnit\Framework\TestCase;
 use App\creditCard\CreditCardDTO;
 use App\creditCard\BankFactory;
@@ -20,9 +22,11 @@ class FactoryTest extends TestCase
         $creditCardDTO->validThru = '1125';
 
         // act
-        $resultDTO = BankFactory::create($creditCardDTO)->validate();
+        $bank = BankFactory::create($creditCardDTO);
+        $resultDTO = $bank->validate();
 
         // assert
+        static::assertInstanceOf(NcccBank::class, $bank);
         static::assertInstanceOf(ValidateDTO::class, $resultDTO);
     }
 
@@ -36,9 +40,11 @@ class FactoryTest extends TestCase
         $creditCardDTO->validThru = '1125';
 
         // act
-        $resultDTO = BankFactory::create($creditCardDTO)->validate();
+        $bank      = BankFactory::create($creditCardDTO);
+        $resultDTO = $bank->validate();
 
         // assert
+        static::assertInstanceOf(CathayBank::class, $bank);
         static::assertInstanceOf(ValidateDTO::class, $resultDTO);
     }
 }
