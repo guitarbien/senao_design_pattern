@@ -47,4 +47,22 @@ class FactoryTest extends TestCase
         static::assertInstanceOf(CathayBank::class, $bank);
         static::assertInstanceOf(ResponseDTO::class, $resultDTO);
     }
+
+    public function test_呼叫中信驗證信用卡()
+    {
+        // arrange
+        $creditCardDTO = new CreditCardDTO();
+
+        $creditCardDTO->cardNo    = '9999888877776666';
+        $creditCardDTO->cvc       = '567';
+        $creditCardDTO->validThru = '1125';
+
+        // act
+        $bank      = BankFactory::create($creditCardDTO);
+        $resultDTO = $bank->validate();
+
+        // assert
+        static::assertInstanceOf(CtbcBank::class, $bank);
+        static::assertInstanceOf(ResponseDTO::class, $resultDTO);
+    }
 }
