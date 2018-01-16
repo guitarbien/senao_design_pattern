@@ -11,5 +11,5 @@ abstract class AbstractCostumeFactory
     /**
      * @return AbstractCostume
      */
-    abstract protected function createCostume(): AbstractCostume;
+    abstract public function createCostume(): AbstractCostume;
 }

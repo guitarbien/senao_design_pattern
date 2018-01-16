@@ -11,7 +11,7 @@ class WarcraftFactory extends AbstractCostumeFactory
     /**
      * @return AbstractCostume
      */
-    protected function createCostume(): AbstractCostume
+    public function createCostume(): AbstractCostume
     {
         return new WarcraftCostume();
     }
