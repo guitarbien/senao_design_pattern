@@ -6,15 +6,8 @@ namespace App\cosplay;
  * Class PokemonFactory
  * @package App\cosplay
  */
-class PokemonFactory
+class PokemonFactory extends AbstractCostumeFactory
 {
-    /**
-     * PokemonFactory constructor.
-     */
-    public function __construct()
-    {
-    }
-
     /**
      * @return AbstractCostume
      */
