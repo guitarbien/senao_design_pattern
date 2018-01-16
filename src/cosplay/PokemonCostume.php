@@ -2,11 +2,16 @@
 
 namespace App\cosplay;
 
-use App\cosplay\part\Cloth;
-use App\cosplay\part\Hat;
-use App\cosplay\part\Helmet;
-use App\cosplay\part\Shoe;
-use App\cosplay\part\Weapon;
+use App\cosplay\part\definition\Cloth;
+use App\cosplay\part\definition\Hat;
+use App\cosplay\part\definition\Helmet;
+use App\cosplay\part\definition\Shoe;
+use App\cosplay\part\definition\Weapon;
+use App\cosplay\part\concrete\Armor;
+use App\cosplay\part\concrete\BaseballHat;
+use App\cosplay\part\concrete\VikingHelmet;
+use App\cosplay\part\concrete\Boots;
+use App\cosplay\part\concrete\Sword;
 
 /**
  * Class PokemonCostume
@@ -19,7 +24,7 @@ class PokemonCostume extends AbstractCostume
      */
     protected function createHat(): Hat
     {
-        // TODO: Implement createHat() method.
+        return new BaseballHat();
     }
 
     /**
@@ -27,7 +32,7 @@ class PokemonCostume extends AbstractCostume
      */
     protected function createHelmet(): Helmet
     {
-        // TODO: Implement createHelmet() method.
+        return new VikingHelmet();
     }
 
     /**
@@ -35,7 +40,7 @@ class PokemonCostume extends AbstractCostume
      */
     protected function createCloth(): Cloth
     {
-        // TODO: Implement createCloth() method.
+        return new Armor();
     }
 
     /**
@@ -43,7 +48,7 @@ class PokemonCostume extends AbstractCostume
      */
     protected function createShoe(): Shoe
     {
-        // TODO: Implement createShoe() method.
+        return new Boots();
     }
 
     /**
@@ -51,6 +56,6 @@ class PokemonCostume extends AbstractCostume
      */
     protected function createWeapon(): Weapon
     {
-        // TODO: Implement createWeapon() method.
+        return new Sword();
     }
 }

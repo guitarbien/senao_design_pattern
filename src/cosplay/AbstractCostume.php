@@ -2,11 +2,11 @@
 
 namespace App\cosplay;
 
-use App\cosplay\part\Hat;
-use App\cosplay\part\Helmet;
-use App\cosplay\part\Cloth;
-use App\cosplay\part\Shoe;
-use App\cosplay\part\Weapon;
+use App\cosplay\part\definition\Hat;
+use App\cosplay\part\definition\Helmet;
+use App\cosplay\part\definition\Cloth;
+use App\cosplay\part\definition\Shoe;
+use App\cosplay\part\definition\Weapon;
 
 /**
  * Class AbstractCostume
