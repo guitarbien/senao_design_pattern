@@ -8,7 +8,7 @@ use App\cosplay\part\definition\Helmet;
 use App\cosplay\part\definition\Shoe;
 use App\cosplay\part\definition\Weapon;
 use App\cosplay\part\concrete\Armor;
-use App\cosplay\part\concrete\BaseballHat;
+use App\cosplay\part\concrete\BaseballCap;
 use App\cosplay\part\concrete\VikingHelmet;
 use App\cosplay\part\concrete\Boots;
 use App\cosplay\part\concrete\Sword;
@@ -32,7 +32,7 @@ class PokemonCostume extends AbstractCostume
      */
     protected function createHat(): Hat
     {
-        return new BaseballHat();
+        return new BaseballCap();
     }
 
     /**

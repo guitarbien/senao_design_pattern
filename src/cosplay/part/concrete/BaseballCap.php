@@ -5,10 +5,10 @@ namespace App\cosplay\part\concrete;
 use App\cosplay\part\definition\Hat;
 
 /**
- * Class BaseballHat
+ * Class BaseballCap
  * @package App\cosplay\part\concret
  */
-class BaseballHat extends Hat
+class BaseballCap extends Hat
 {
 
 }
