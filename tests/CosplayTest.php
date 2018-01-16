@@ -1,6 +1,6 @@
 <?php
 
-use App\cosplay\PokemonCostume;
+use App\cosplay\AbstractCostume;
 use App\cosplay\PokemonFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -14,6 +14,6 @@ class CosplayTest extends TestCase
         $factory = new PokemonFactory();
         $costume = $factory->createCostume();
 
-        static::assertInstanceOf(PokemonCostume::class, $costume);
+        static::assertInstanceOf(AbstractCostume::class, $costume);
     }
 }

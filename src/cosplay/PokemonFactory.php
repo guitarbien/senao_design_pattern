@@ -16,9 +16,9 @@ class PokemonFactory
     }
 
     /**
-     * @return PokemonCostume
+     * @return AbstractCostume
      */
-    public function createCostume(): PokemonCostume
+    public function createCostume(): AbstractCostume
     {
         return new PokemonCostume();
     }
