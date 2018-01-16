@@ -1,5 +1,7 @@
 <?php
 
+use App\cosplay\PokemonCostume;
+use App\cosplay\PokemonFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
