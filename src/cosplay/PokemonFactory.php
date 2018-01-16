@@ -20,5 +20,6 @@ class PokemonFactory
      */
     public function createCostume(): PokemonCostume
     {
+        return new PokemonCostume();
     }
 }
