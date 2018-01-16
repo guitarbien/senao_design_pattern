@@ -20,6 +20,14 @@ use App\cosplay\part\concrete\Sword;
 class PokemonCostume extends AbstractCostume
 {
     /**
+     * PokemonCostume constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
      * @return Hat
      */
     protected function createHat(): Hat
