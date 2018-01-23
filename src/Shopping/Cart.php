@@ -5,10 +5,10 @@ namespace App\Shopping;
 use Illuminate\Support\Collection;
 
 /**
- * Class Order
+ * Class Cart
  * @package App\Shopping
  */
-class Order
+class Cart
 {
     /** @var DiscountPlan[] */
     private $planList = [];
@@ -19,7 +19,7 @@ class Order
     /**
      * @param Product $product
      * @param int $int
-     * @return Order
+     * @return Cart
      */
     public function addItem(Product $product, int $int = 1): self
     {
@@ -32,7 +32,7 @@ class Order
 
     /**
      * @param DiscountPlan $plan
-     * @return Order
+     * @return Cart
      */
     public function addDiscountPlan(DiscountPlan $plan): self
     {

@@ -1,7 +1,7 @@
 <?php
 
 use App\Shopping\MinusHundredPlan;
-use App\Shopping\Order;
+use App\Shopping\Cart;
 use App\Shopping\Product;
 use App\Shopping\PercentOffPlan;
 use PHPUnit\Framework\TestCase;
@@ -20,10 +20,10 @@ class StrategyTest extends TestCase
 
         $minusHundredPlan = new MinusHundredPlan(1000);
 
-        $order = new Order();
+        $cart = new Cart();
 
         // act
-        $order->addItem($productA, 2)
+        $cart->addItem($productA, 2)
               ->addItem($productB, 3)
               ->addItem($productC)
               ->addItem($productC)
@@ -31,7 +31,7 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) - 100;
-        static::assertEquals($expected, $order->calculateTotalPrice());
+        static::assertEquals($expected, $cart->calculateTotalPrice());
     }
 
     public function test_訂單可以使用全館八折活動()
@@ -43,10 +43,10 @@ class StrategyTest extends TestCase
 
         $percentOffPlan = new PercentOffPlan(20);
 
-        $order = new Order();
+        $cart = new Cart();
 
         // act
-        $order->addItem($productA, 2)
+        $cart->addItem($productA, 2)
               ->addItem($productB, 3)
               ->addItem($productC)
               ->addItem($productC)
@@ -54,7 +54,7 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) * 0.8;
-        static::assertEquals($expected, $order->calculateTotalPrice());
+        static::assertEquals($expected, $cart->calculateTotalPrice());
     }
 
     public function test_訂單可以自動選用對消費者最優惠促銷活動_全館八折較優()
@@ -67,10 +67,10 @@ class StrategyTest extends TestCase
         $minusHundredPlan = new MinusHundredPlan(1000);
         $percentOffPlan   = new PercentOffPlan(20);
 
-        $order = new Order();
+        $cart = new Cart();
 
         // act
-        $order->addItem($productA, 2)
+        $cart->addItem($productA, 2)
               ->addItem($productB, 3)
               ->addItem($productC)
               ->addItem($productC)
@@ -79,6 +79,7 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) * 0.8;
-        static::assertEquals($expected, $order->calculateTotalPrice());
+        static::assertEquals($expected, $cart->calculateTotalPrice());
+    }
     }
 }
