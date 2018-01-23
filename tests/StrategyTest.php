@@ -14,9 +14,9 @@ class StrategyTest extends TestCase
     public function test_訂單可以使用滿千送百活動()
     {
         // arrange
-        $productA = new Product('sno001A', 110);
-        $productB = new Product('sno002B', 95);
-        $productC = new Product('sno003C', 675);
+        $productA = new Product(110);
+        $productB = new Product(95);
+        $productC = new Product(675);
 
         $minusHundredPlan = new MinusHundredPlan(1000);
 
@@ -37,9 +37,9 @@ class StrategyTest extends TestCase
     public function test_訂單可以使用全館八折活動()
     {
         // arrange
-        $productA = new Product('sno001A', 110);
-        $productB = new Product('sno002B', 95);
-        $productC = new Product('sno003C', 675);
+        $productA = new Product(110);
+        $productB = new Product(95);
+        $productC = new Product(675);
 
         $percentOffPlan = new PercentOffPlan(20);
 
@@ -60,9 +60,9 @@ class StrategyTest extends TestCase
     public function test_訂單可以自動選用對消費者最優惠促銷活動_全館八折較優()
     {
         // arrange
-        $productA = new Product('sno001A', 110);
-        $productB = new Product('sno002B', 95);
-        $productC = new Product('sno003C', 675);
+        $productA = new Product(110);
+        $productB = new Product(95);
+        $productC = new Product(675);
 
         $minusHundredPlan = new MinusHundredPlan(1000);
         $percentOffPlan   = new PercentOffPlan(20);

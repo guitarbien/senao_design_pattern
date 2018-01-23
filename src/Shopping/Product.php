@@ -8,20 +8,15 @@ namespace App\Shopping;
  */
 class Product
 {
-    /** @var string 商品料號 */
-    private $serialNo;
-
     /** @var int 售價 */
     private $price;
 
     /**
      * Product constructor.
-     * @param string $serialNo
      * @param int $price
      */
-    public function __construct(string $serialNo, int $price)
+    public function __construct(int $price)
     {
-        $this->serialNo = $serialNo;
         $this->price    = $price;
     }
 
