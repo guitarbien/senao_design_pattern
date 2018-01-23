@@ -30,7 +30,7 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) - 100;
-        static::assertEquals($expected, $order->cauculateTotalPrice());
+        static::assertEquals($expected, $order->calculateTotalPrice());
     }
 
     public function test_訂單可以使用全館八折活動()
@@ -53,7 +53,7 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) * 0.8;
-        static::assertEquals($expected, $order->cauculateTotalPrice());
+        static::assertEquals($expected, $order->calculateTotalPrice());
     }
 
     public function test_訂單可以自動選用對消費者最優惠促銷活動_全館八折較優()
@@ -78,7 +78,7 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) * 0.8;
-        static::assertEquals($expected, $order->cauculateTotalPrice());
+        static::assertEquals($expected, $order->calculateTotalPrice());
     }
 
     public function test_訂單可以自動選用對消費者最優惠促銷活動_滿千送百較優()
@@ -98,6 +98,6 @@ class StrategyTest extends TestCase
 
         // assert
         $expected = (110 * 10) - 100;
-        static::assertEquals($expected, $order->cauculateTotalPrice());
+        static::assertEquals($expected, $order->calculateTotalPrice());
     }
 }
