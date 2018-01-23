@@ -12,11 +12,11 @@ class Order
     private $plan;
 
     /**
-     * @param Product $productA
+     * @param Product $product
      * @param int $int
      * @return Order
      */
-    public function addItem(Product $productA, int $int = 1): self
+    public function addItem(Product $product, int $int = 1): self
     {
         return $this;
     }
