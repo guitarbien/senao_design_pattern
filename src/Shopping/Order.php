@@ -10,8 +10,8 @@ use Illuminate\Support\Collection;
  */
 class Order
 {
-    /** @var DiscountPlan */
-    private $plan;
+    /** @var DiscountPlan[] */
+    private $planList = [];
 
     /** @var Product[] */
     private $productList = [];
@@ -36,7 +36,7 @@ class Order
      */
     public function addDiscountPlan(DiscountPlan $plan): self
     {
-        $this->plan = $plan;
+        $this->planList[] = $plan;
         return $this;
     }
 
@@ -46,7 +46,11 @@ class Order
     public function calculateTotalPrice(): int
     {
         $originalPrice = $this->calculateOriginalPrice();
-        return $this->plan->calculateTotalPrice($originalPrice);
+
+        // 以較優惠的方案計算
+        return collect($this->planList)->min(function(DiscountPlan $item) use($originalPrice) {
+            return $item->calculateTotalPrice($originalPrice);
+        });
     }
 
     /**
