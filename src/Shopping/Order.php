@@ -2,6 +2,8 @@
 
 namespace App\Shopping;
 
+use Illuminate\Support\Collection;
+
 /**
  * Class Order
  * @package App\Shopping
@@ -21,7 +23,9 @@ class Order
      */
     public function addItem(Product $product, int $int = 1): self
     {
-        $this->productList[] = $product;
+        Collection::times($int, function() use($product) {
+            $this->productList[] = $product;
+        });
 
         return $this;
     }
