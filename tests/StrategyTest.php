@@ -74,31 +74,11 @@ class StrategyTest extends TestCase
               ->addItem($productB, 3)
               ->addItem($productC)
               ->addItem($productC)
-              ->addDiscountPlan($minusHundredPlan)
-              ->addDiscountPlan($percentOffPlan);
+              ->addDiscountPlan($percentOffPlan)
+              ->addDiscountPlan($minusHundredPlan);
 
         // assert
         $expected = (110 * 2 + 95 * 3 + 675 * 2) * 0.8;
-        static::assertEquals($expected, $order->calculateTotalPrice());
-    }
-
-    public function test_訂單可以自動選用對消費者最優惠促銷活動_滿千送百較優()
-    {
-        // arrange
-        $productA = new Product('sno001A', 110);
-
-        $minusHundredPlan = new MinusHundredPlan(1000);
-        $percentOffPlan   = new PercentOffPlan(20);
-
-        $order = new Order();
-
-        // act
-        $order->addItem($productA, 10)
-              ->addDiscountPlan($minusHundredPlan)
-              ->addDiscountPlan($percentOffPlan);
-
-        // assert
-        $expected = (110 * 10) - 100;
         static::assertEquals($expected, $order->calculateTotalPrice());
     }
 }
