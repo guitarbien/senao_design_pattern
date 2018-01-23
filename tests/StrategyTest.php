@@ -1,8 +1,9 @@
 <?php
 
-use App\Shopping\Product;
 use App\Shopping\MinusHundredPlan;
 use App\Shopping\Order;
+use App\Shopping\Product;
+use App\Shopping\PercentOffPlan;
 use PHPUnit\Framework\TestCase;
 
 /**
