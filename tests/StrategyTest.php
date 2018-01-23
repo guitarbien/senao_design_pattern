@@ -1,5 +1,6 @@
 <?php
 
+use App\Shopping\Product;
 use PHPUnit\Framework\TestCase;
 
 /**
