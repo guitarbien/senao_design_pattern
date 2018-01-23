@@ -2,8 +2,9 @@
 design pattern practice
 
 Development with:
-- PHP 7.2.0
-- JetBrains PhpStorm 2017.3.2
+- PHP 7.2.1
+- JetBrains PhpStorm 2017.3.3
+- PHPUnit 6.5.5
 
 ---
 
