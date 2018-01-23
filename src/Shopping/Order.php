@@ -8,6 +8,9 @@ namespace App\Shopping;
  */
 class Order
 {
+    /** @var DiscountPlan */
+    private $plan;
+
     /**
      * @param Product $productA
      * @param int $int
@@ -24,6 +27,7 @@ class Order
      */
     public function addDiscountPlan(DiscountPlan $plan): self
     {
+        $this->plan = $plan;
         return $this;
     }
 
@@ -32,6 +36,15 @@ class Order
      */
     public function calculateTotalPrice(): int
     {
-        return 1755;
+        $originalPrice = $this->calculateOriginalPrice();
+        return $this->plan->calculateTotalPrice($originalPrice);
+    }
+
+    /**
+     * @return int
+     */
+    private function calculateOriginalPrice(): int
+    {
+        return 1;
     }
 }
