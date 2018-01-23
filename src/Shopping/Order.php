@@ -11,6 +11,9 @@ class Order
     /** @var DiscountPlan */
     private $plan;
 
+    /** @var Product[] */
+    private $productList = [];
+
     /**
      * @param Product $product
      * @param int $int
@@ -18,6 +21,8 @@ class Order
      */
     public function addItem(Product $product, int $int = 1): self
     {
+        $this->productList[] = $product;
+
         return $this;
     }
 
@@ -45,6 +50,8 @@ class Order
      */
     private function calculateOriginalPrice(): int
     {
-        return 1;
+        return collect($this->productList)->sum(function(Product $item) {
+            return $item->getPrice();
+        });
     }
 }
