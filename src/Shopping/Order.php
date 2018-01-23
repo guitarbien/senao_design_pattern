@@ -17,4 +17,13 @@ class Order
     {
         return $this;
     }
+
+    /**
+     * @param MinusHundredPlan $minusHundredPlan
+     * @return Order
+     */
+    public function addDiscountPlan(MinusHundredPlan $minusHundredPlan): self
+    {
+        return $this;
+    }
 }
