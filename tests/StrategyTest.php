@@ -81,5 +81,15 @@ class StrategyTest extends TestCase
         $expected = (110 * 2 + 95 * 3 + 675 * 2) * 0.8;
         static::assertEquals($expected, $cart->calculateTotalPrice());
     }
+
+    public function test_全館八折一定比較便宜()
+    {
+        foreach (range(1, 100000, 500) as $price) {
+            $planAPrice = (new Cart())->addItem(new Product($price))->addDiscountPlan(new PercentOffPlan(20))->calculateTotalPrice();
+            $planBPrice = (new Cart())->addItem(new Product($price))->addDiscountPlan(new MinusHundredPlan(1000))->calculateTotalPrice();
+
+            static::assertLessThan($planBPrice, $planAPrice);
+
+        }
     }
 }
