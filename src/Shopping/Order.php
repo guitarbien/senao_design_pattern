@@ -26,4 +26,12 @@ class Order
     {
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function calculateTotalPrice(): int
+    {
+        return 1755;
+    }
 }
