@@ -8,5 +8,9 @@ namespace App\Shopping;
  */
 interface DiscountPlan
 {
-
+    /**
+     * @param int $originalPrice
+     * @return int
+     */
+    public function calculateTotalPrice(int $originalPrice): int;
 }
