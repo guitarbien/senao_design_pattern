@@ -2,6 +2,7 @@
 
 use App\Shopping\Product;
 use App\Shopping\MinusHundredPlan;
+use App\Shopping\Order;
 use PHPUnit\Framework\TestCase;
 
 /**
