@@ -3,10 +3,10 @@
 namespace App\Shopping;
 
 /**
- * Class PercentOffPlan
+ * Interface DiscountPlan
  * @package App\Shopping
  */
-class PercentOffPlan implements DiscountPlan
+interface DiscountPlan
 {
 
 }
