@@ -22,7 +22,7 @@ class BridgeTest extends TestCase
         $document->display();
 
         // assert
-        $expected = "+------------+\n|Hello World!|\n+------------+\n";
+        $expected = "+------------+" . PHP_EOL . "|Hello World!|" . PHP_EOL . "+------------+" . PHP_EOL . "";
         $this->assertStringStartsWith($expected, $this->getActualOutput());
     }
 
@@ -36,7 +36,7 @@ class BridgeTest extends TestCase
         $repeatDocument->display();
 
         // assert
-        $expected = "+-------------+\n|Hello Taiwan!|\n+-------------+\n";
+        $expected = "+-------------+" . PHP_EOL . "|Hello Taiwan!|" . PHP_EOL . "+-------------+" . PHP_EOL . "";
         $this->assertStringStartsWith($expected, $this->getActualOutput());
     }
 
@@ -50,7 +50,7 @@ class BridgeTest extends TestCase
         $repeatDocument->printTimes(2);
 
         // assert
-        $expected = "+-------------+\n|Hello Taiwan!|\n|Hello Taiwan!|\n+-------------+\n";
+        $expected = "+-------------+" . PHP_EOL . "|Hello Taiwan!|" . PHP_EOL . "|Hello Taiwan!|" . PHP_EOL . "+-------------+" . PHP_EOL . "";
         $this->assertStringStartsWith($expected, $this->getActualOutput());
     }
 
@@ -65,7 +65,7 @@ class BridgeTest extends TestCase
         $document->display();
 
         // assert
-        $expected = "+-------------+\n|Hello Taiwan!|\n+-------------+\n";
+        $expected = "+-------------+" . PHP_EOL . "|Hello Taiwan!|" . PHP_EOL . "+-------------+" . PHP_EOL . "";
 
         $actual = file_get_contents(FilePrinter::FILE_PATH);
         $this->assertEquals($expected, $actual);
@@ -82,7 +82,7 @@ class BridgeTest extends TestCase
         $repeatDocument->printTimes(2);
 
         // assert
-        $expected = "+-------------+\n|Hello Taiwan!|\n|Hello Taiwan!|\n+-------------+\n";
+        $expected = "+-------------+" . PHP_EOL . "|Hello Taiwan!|" . PHP_EOL . "|Hello Taiwan!|" . PHP_EOL . "+-------------+" . PHP_EOL . "";
 
         $actual = file_get_contents(FilePrinter::FILE_PATH);
         $this->assertEquals($expected, $actual);
