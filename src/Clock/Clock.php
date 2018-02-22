@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Clock;
 
 /**
  * Class Clock
- * @package App
+ * @package App\Clock
  */
 class Clock extends AbstractTimerSubject
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Clock;
 
 /**
  * Interface ITimerObserver
- * @package App
+ * @package App\Clock
  */
 interface ITimerObserver
 {
