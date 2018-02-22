@@ -1,7 +1,7 @@
 <?php
 
-use App\Clock;
-use App\DigitalClock;
+use App\Clock\Clock;
+use App\Clock\DigitalClock;
 use PHPUnit\Framework\TestCase;
 
 /**

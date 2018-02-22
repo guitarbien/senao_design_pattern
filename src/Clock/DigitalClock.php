@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Clock;
 
 /**
  * Class DigitalClock
- * @package App
+ * @package App\Clock
  */
 class DigitalClock implements ITimerObserver
 {

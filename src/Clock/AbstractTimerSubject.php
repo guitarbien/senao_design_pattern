@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Clock;
 
 use Throwable;
 
 /**
  * Class ClockSubject
- * @package App
+ * @package App\Clock
  */
 abstract class AbstractTimerSubject implements ITimer
 {
