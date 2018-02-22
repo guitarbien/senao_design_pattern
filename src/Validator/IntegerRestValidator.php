@@ -14,7 +14,7 @@ final class IntegerRestValidator extends AbstractValidator
      * @param string $input
      * @return bool
      */
-    public function validate(string $input): bool
+    protected function childValidate(string $input): bool
     {
         for ($i = 1; $i < strlen($input); $i++) {
             if (!is_numeric($input[$i])) {
@@ -22,10 +22,6 @@ final class IntegerRestValidator extends AbstractValidator
             }
         }
 
-        if (!isset($this->nextValidator)) {
-            return true;
-        }
-
-        return $this->nextValidator->validate($input);
+        return true;
     }
 }

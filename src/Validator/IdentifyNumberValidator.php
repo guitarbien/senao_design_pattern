@@ -12,10 +12,10 @@ final class IdentifyNumberValidator extends AbstractValidator
 {
     /**
      * 身分證規則檢核
-     * @param string $idNumber
+     * @param string $input
      * @return bool
      */
-    public function validate(string $idNumber): bool
+    protected function childValidate(string $input): bool
     {
         // Alphabet value
         $alphabetMapping = [
@@ -50,7 +50,7 @@ final class IdentifyNumberValidator extends AbstractValidator
         $multipleList = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
 
         // 將 A123456789 的字首根據 alphabetMapping 轉為 10123456789
-        $idValueString = $alphabetMapping[$idNumber[0]] . substr($idNumber, 1, 9);
+        $idValueString = $alphabetMapping[$input[0]] . substr($input, 1, 9);
 
         // 使用 for 讓 string 可以直接以 [$i] 取得該順序的字元
         $sum = 0;
@@ -59,16 +59,6 @@ final class IdentifyNumberValidator extends AbstractValidator
         }
 
         // 若能整除於 10 則為合法身分證字號
-        $result = ($sum % 10 === 0);
-
-        if (!$result) {
-            return $result;
-        }
-
-        if (!isset($this->nextValidator)) {
-            return true;
-        }
-
-        return $this->nextValidator->validate($idNumber);
+        return ($sum % 10 === 0);
     }
 }

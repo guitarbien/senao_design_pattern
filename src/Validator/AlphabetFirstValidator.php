@@ -14,16 +14,8 @@ final class AlphabetFirstValidator extends AbstractValidator
      * @param string $input
      * @return bool
      */
-    public function validate(string $input): bool
+    protected function childValidate(string $input): bool
     {
-        if (!ctype_alpha($input[0])) {
-            return false;
-        }
-
-        if (!isset($this->nextValidator)) {
-            return true;
-        }
-
-        return $this->nextValidator->validate($input);
+        return ctype_alpha($input[0]);
     }
 }

@@ -23,4 +23,28 @@ abstract class AbstractValidator implements ValidatorInterface
 
         return $validator;
     }
+
+    /**
+     * 作為各個實作 ValidatorInterface 的 CoR 框架
+     * @param string $input
+     * @return bool
+     */
+    final public function validate(string $input): bool
+    {
+        if (!$this->childValidate($input)) {
+            return false;
+        }
+
+        if (!isset($this->nextValidator)) {
+            return true;
+        }
+
+        return $this->nextValidator->validate($input);
+    }
+
+    /**
+     * @param string $input
+     * @return bool
+     */
+    abstract protected function childValidate(string $input): bool;
 }
