@@ -14,10 +14,10 @@ abstract class AbstractValidator implements ValidatorInterface
     protected $nextValidator;
 
     /**
-     * @param ValidatorInterface $validator
+     * @param AbstractValidator $validator
      * @return ValidatorInterface
      */
-    public function setNext(ValidatorInterface $validator): ValidatorInterface
+    final public function setNext(AbstractValidator $validator): ValidatorInterface
     {
         $this->nextValidator = $validator;
 

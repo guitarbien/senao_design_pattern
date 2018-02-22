@@ -11,10 +11,10 @@ namespace App\Validator;
 interface ValidatorInterface
 {
     /**
-     * @param ValidatorInterface $validator
+     * @param AbstractValidator $validator
      * @return ValidatorInterface
      */
-    public function setNext(ValidatorInterface $validator): ValidatorInterface;
+    public function setNext(AbstractValidator $validator): ValidatorInterface;
 
     /**
      * @param string $input
