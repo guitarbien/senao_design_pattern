@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\StatePattern\Color;
 use App\StatePattern\GreenState;
 use App\StatePattern\RedState;
-use App\StatePattern\TrafficLight;
+use App\StatePattern\TrafficLightContext;
 use App\StatePattern\YellowState;
 use PHPUnit\Framework\TestCase;
 
@@ -17,7 +17,7 @@ class StateTest extends TestCase
     public function test_紅綠燈號誌＿初始為綠燈()
     {
         // arrange
-        $trafficLight = new TrafficLight();
+        $trafficLight = new TrafficLightContext();
         $trafficLight->setState(new GreenState());
 
         // act
@@ -31,7 +31,7 @@ class StateTest extends TestCase
     public function test_紅綠燈號誌＿初始後變化一次為黃燈()
     {
         // arrange
-        $trafficLight = new TrafficLight();
+        $trafficLight = new TrafficLightContext();
         $trafficLight->setState(new GreenState());
 
         // act
@@ -47,7 +47,7 @@ class StateTest extends TestCase
     public function test_紅綠燈號誌＿初始後變化兩次為紅燈()
     {
         // arrange
-        $trafficLight = new TrafficLight();
+        $trafficLight = new TrafficLightContext();
         $trafficLight->setState(new GreenState());
 
         // act
@@ -64,7 +64,7 @@ class StateTest extends TestCase
     public function test_紅綠燈號誌＿初始後變化三次為綠燈()
     {
         // arrange
-        $trafficLight = new TrafficLight();
+        $trafficLight = new TrafficLightContext();
         $trafficLight->setState(new GreenState());
 
         // act

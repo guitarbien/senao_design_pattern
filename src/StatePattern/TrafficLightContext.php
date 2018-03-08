@@ -8,7 +8,7 @@ namespace App\StatePattern;
  * Class TrafficLight
  * @package App\StatePattern
  */
-final class TrafficLight
+final class TrafficLightContext
 {
     /** @var State */
     private $state;
