@@ -65,6 +65,6 @@ class StateTest extends TestCase
         $status = $trafficLight->getState();
 
         // assert
-        static::assertEquals($status, State::GREEN);
+        static::assertEquals($status, new State(State::GREEN));
     }
 }
