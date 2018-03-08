@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use App\StatePattern\TrafficLight;
-use App\StatePattern\State;
+use App\StatePattern\Color;
 
 /**
  * Class StateTest
@@ -20,7 +20,7 @@ class StateTest extends TestCase
         $status = $trafficLight->getState();
 
         // assert
-        static::assertEquals($status, new State(State::GREEN));
+        static::assertEquals($status, new Color(Color::GREEN));
     }
 
     public function test_紅綠燈號誌＿初始後變化一次為黃燈()
@@ -34,7 +34,7 @@ class StateTest extends TestCase
         $status = $trafficLight->getState();
 
         // assert
-        static::assertEquals($status, new State(State::YELLOW));
+        static::assertEquals($status, new Color(Color::YELLOW));
     }
 
     public function test_紅綠燈號誌＿初始後變化兩次為紅燈()
@@ -49,7 +49,7 @@ class StateTest extends TestCase
         $status = $trafficLight->getState();
 
         // assert
-        static::assertEquals($status, new State(State::RED));
+        static::assertEquals($status, new Color(Color::RED));
     }
 
     public function test_紅綠燈號誌＿初始後變化三次為綠燈()
@@ -65,6 +65,6 @@ class StateTest extends TestCase
         $status = $trafficLight->getState();
 
         // assert
-        static::assertEquals($status, new State(State::GREEN));
+        static::assertEquals($status, new Color(Color::GREEN));
     }
 }

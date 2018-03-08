@@ -10,7 +10,7 @@ namespace App\StatePattern;
  */
 final class TrafficLight
 {
-    /** @var State */
+    /** @var Color */
     private $state;
 
     /**
@@ -18,13 +18,13 @@ final class TrafficLight
      */
     public function __construct()
     {
-        $this->state = State::GREEN();
+        $this->state = Color::GREEN();
     }
 
     /**
-     * @return State
+     * @return Color
      */
-    public function getState(): State
+    public function getState(): Color
     {
         return $this->state;
     }
@@ -32,20 +32,20 @@ final class TrafficLight
     public function change(): void
     {
         // 綠燈才可以變黃燈
-        if ($this->state->equals(State::GREEN())) {
-            $this->state = State::YELLOW();
+        if ($this->state->equals(Color::GREEN())) {
+            $this->state = Color::YELLOW();
             return;
         }
 
         // 黃燈才可以變紅燈
-        if ($this->state->equals(State::YELLOW())) {
-            $this->state = State::RED();
+        if ($this->state->equals(Color::YELLOW())) {
+            $this->state = Color::RED();
             return;
         }
 
         // 紅燈才可以變綠燈
-        if ($this->state->equals(State::RED())) {
-            $this->state = State::GREEN();
+        if ($this->state->equals(Color::RED())) {
+            $this->state = Color::GREEN();
             return;
         }
     }

@@ -10,33 +10,33 @@ use MyCLabs\Enum\Enum;
  * Class State
  * @package App\StatePattern
  */
-final class State extends Enum
+final class Color extends Enum
 {
     const GREEN  = 'green';
     const YELLOW = 'yellow';
     const RED    = 'red';
 
     /**
-     * @return State
+     * @return Color
      */
     public static function GREEN(): self
     {
-        return new State(self::GREEN);
+        return new Color(self::GREEN);
     }
 
     /**
-     * @return State
+     * @return Color
      */
     public static function YELLOW(): self
     {
-        return new State(self::YELLOW);
+        return new Color(self::YELLOW);
     }
 
     /**
-     * @return State
+     * @return Color
      */
     public static function RED(): self
     {
-        return new State(self::RED);
+        return new Color(self::RED);
     }
 }
