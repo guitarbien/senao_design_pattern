@@ -32,5 +32,11 @@ final class TrafficLight
     public function change(): void
     {
         $this->state = State::YELLOW();
+
+        // 紅燈才可以變綠燈
+        if ($this->state->equals(State::RED())) {
+            $this->state = State::GREEN();
+            return;
+        }
     }
 }
