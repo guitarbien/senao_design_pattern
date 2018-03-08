@@ -34,7 +34,7 @@ class StateTest extends TestCase
         $status = $trafficLight->getState();
 
         // assert
-        static::assertEquals($status, State::YELLOW);
+        static::assertEquals($status, new State(State::YELLOW));
     }
 
     public function test_紅綠燈號誌＿初始後變化兩次為紅燈()

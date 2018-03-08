@@ -12,5 +12,6 @@ use MyCLabs\Enum\Enum;
  */
 final class State extends Enum
 {
-    const GREEN = 'green';
+    const GREEN  = 'green';
+    const YELLOW = 'yellow';
 }
