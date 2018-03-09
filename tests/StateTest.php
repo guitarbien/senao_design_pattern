@@ -78,4 +78,22 @@ class StateTest extends TestCase
         static::assertInstanceOf(GreenState::class, $state);
         static::assertTrue(Color::GREEN()->equals($state->getColor()));
     }
+
+    public function test_紅綠燈號誌＿初始紅燈後變化三次為紅燈()
+    {
+        // arrange
+        $trafficLight = new TrafficLightContext();
+        $trafficLight->setState(new RedState());
+
+        // act
+        $trafficLight->change();
+        $trafficLight->change();
+        $trafficLight->change();
+
+        $state = $trafficLight->getState();
+
+        // assert
+        static::assertInstanceOf(RedState::class, $state);
+        static::assertTrue(Color::RED()->equals($state->getColor()));
+    }
 }
