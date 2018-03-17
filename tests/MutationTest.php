@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use App\Mutation\Form;
+use App\Mutation\AdultFilter;
 
 /**
  * Class MutationTest
@@ -33,5 +34,23 @@ class MutationTest extends TestCase
 
         // assert
         static::assertFalse($result);
+    }
+
+    // another example
+    public function test_過濾年紀為18歲以上有1人()
+    {
+        // arrange
+        $users = [
+            ['age' => 20],
+            ['age' => 15],
+        ];
+
+        $adultFilter = new AdultFilter();
+
+        // act
+        $adults = $adultFilter->exec($users);
+
+        // assert
+        static::assertCount(1, $adults);
     }
 }
