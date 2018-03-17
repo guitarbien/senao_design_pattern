@@ -53,4 +53,22 @@ class MutationTest extends TestCase
         // assert
         static::assertCount(1, $adults);
     }
+
+    public function test_過濾年紀為18歲以上有1人_包含18歲()
+    {
+        // arrange
+        $users = [
+            ['age' => 18],
+            ['age' => 15],
+            ['age' => 14],
+        ];
+
+        $adultFilter = new AdultFilter();
+
+        // act
+        $adults = $adultFilter->exec($users);
+
+        // assert
+        static::assertCount(1, $adults);
+    }
 }
