@@ -13,11 +13,8 @@ final class Order
     /** @var int */
     private $totalPrice;
 
-    /** @var int */
-    private $coupon;
-
-    /** @var bool */
-    private $plusOneEvent;
+    /** @var array */
+    private $events;
 
     /**
      * @return int
@@ -36,34 +33,18 @@ final class Order
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getCoupon(): int
+    public function getEvents(): array
     {
-        return $this->coupon;
+        return $this->events;
     }
 
     /**
-     * @param int $coupon
+     * @param array $events
      */
-    public function setCoupon(int $coupon): void
+    public function setEvents(array $events): void
     {
-        $this->coupon = $coupon;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isPlusOneEvent(): bool
-    {
-        return $this->plusOneEvent;
-    }
-
-    /**
-     * @param bool $plusOneEvent
-     */
-    public function setPlusOneEvent(bool $plusOneEvent): void
-    {
-        $this->plusOneEvent = $plusOneEvent;
+        $this->events = $events;
     }
 }

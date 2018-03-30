@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Decorator;
 
+use App\Decorator\EventDecorator\CouponDecorator;
+use App\Decorator\EventDecorator\NullEventDecorator;
 use App\Decorator\PriceDecorator\DecoratorInterface;
 use App\Decorator\PriceDecorator\MinusHundredDecorator;
 use App\Decorator\PriceDecorator\OriginalPriceDecorator;
@@ -47,7 +49,8 @@ final class CreditCard
             $order->setTotalPrice($totalPrice);
 
             // 送百元折價券
-            $order->setCoupon(100);
+            $events = (new CouponDecorator(new NullEventDecorator()))->getEvents([]);
+            $order->setEvents($events);
         }
 
         return $order;
