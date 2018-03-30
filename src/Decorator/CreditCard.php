@@ -47,7 +47,7 @@ final class CreditCard
             $order->setTotalPrice($totalPrice);
 
             // 送百元折價券
-            $order->setPlusOneEvent(true);
+            $order->setCoupon(100);
         }
 
         return $order;

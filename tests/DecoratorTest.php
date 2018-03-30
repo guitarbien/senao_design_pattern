@@ -17,6 +17,6 @@ class DecoratorTest extends TestCase
         $order = $creditCard->checkOut(1100);
 
         static::assertEquals($order->getTotalPrice(), 800);
-        static::assertTrue($order->isPlusOneEvent());
+        static::assertEquals($order->getCoupon(), 100);
     }
 }
