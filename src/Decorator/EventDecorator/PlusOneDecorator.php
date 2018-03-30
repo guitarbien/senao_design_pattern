@@ -10,20 +10,8 @@ use App\Decorator\Events\PlusOne;
  * Class PlusOneDecorator
  * @package App\Decorator\EventDecorator
  */
-final class PlusOneDecorator implements EventDecorator
+final class PlusOneDecorator extends AbstractEventDecorator
 {
-    /** @var EventDecorator */
-    private $eventDecorator;
-
-    /**
-     * Events constructor.
-     * @param EventDecorator $eventDecorator
-     */
-    public function __construct(EventDecorator $eventDecorator)
-    {
-        $this->eventDecorator = $eventDecorator;
-    }
-
     /**
      * @param array $events
      * @return array

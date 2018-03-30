@@ -9,7 +9,7 @@ use App\Decorator\EventDecorator\CouponDecorator;
 use App\Decorator\EventDecorator\NullEventDecorator;
 use App\Decorator\EventDecorator\PlusOneDecorator;
 use App\Decorator\PriceDecorator\MinusHundredDecorator;
-use App\Decorator\PriceDecorator\OriginalPriceDecorator;
+use App\Decorator\PriceDecorator\OriginalPricePriceDecorator;
 use App\Decorator\PriceDecorator\TwentyPercentOffDecorator;
 
 /**
@@ -41,19 +41,18 @@ final class CreditCard
         if ($this->bank === BankType::CTBC) {
             $totalPrice = (new TwentyPercentOffDecorator(
                             new MinusHundredDecorator(
-                                new OriginalPriceDecorator())))
-                                ->getPrice($totalPrice);
+                                new OriginalPricePriceDecorator())))
+                                    ->getPrice($totalPrice);
 
             $order->setTotalPrice($totalPrice);
 
-            // 送百元折價券
             $events = (new CouponDecorator(new NullEventDecorator()))->getEvents([]);
             $order->setEvents($events);
         }
 
         if ($this->bank === BankType::TAISHIN) {
             $totalPrice = (new TwentyPercentOffDecorator(
-                            new OriginalPriceDecorator()))
+                            new OriginalPricePriceDecorator()))
                                 ->getPrice($totalPrice);
 
             $order->setTotalPrice($totalPrice);
@@ -68,7 +67,7 @@ final class CreditCard
 
         if ($this->bank === BankType::CITI) {
             $totalPrice = (new MinusHundredDecorator(
-                            new OriginalPriceDecorator()))
+                            new OriginalPricePriceDecorator()))
                                 ->getPrice($totalPrice);
 
             $order->setTotalPrice($totalPrice);

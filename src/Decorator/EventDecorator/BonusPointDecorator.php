@@ -10,20 +10,8 @@ use App\Decorator\Events\BonusPoint;
  * Class BonusPointDecorator
  * @package App\Decorator\EventDecorator
  */
-final class BonusPointDecorator implements EventDecorator
+final class BonusPointDecorator extends AbstractEventDecorator
 {
-    /** @var EventDecorator */
-    private $eventDecorator;
-
-    /**
-     * Events constructor.
-     * @param EventDecorator $eventDecorator
-     */
-    public function __construct(EventDecorator $eventDecorator)
-    {
-        $this->eventDecorator = $eventDecorator;
-    }
-
     /**
      * @param array $events
      * @return array

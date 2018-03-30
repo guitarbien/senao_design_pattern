@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Decorator\PriceDecorator;
 
 /**
- * Class TwentyPercentOffDecorator
+ * Class OriginalPriceDecorator
  * @package App\Decorator\PriceDecorator
  */
-final class TwentyPercentOffDecorator extends AbstractPricePriceDecorator
+final class OriginalPricePriceDecorator implements PriceDecoratorInterface
 {
     /**
      * @param int $totalPrice
@@ -16,6 +16,6 @@ final class TwentyPercentOffDecorator extends AbstractPricePriceDecorator
      */
     public function getPrice(int $totalPrice): int
     {
-        return (int)($this->decorator->getPrice($totalPrice) * 0.8);
+        return $totalPrice;
     }
 }

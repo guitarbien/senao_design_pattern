@@ -8,19 +8,8 @@ namespace App\Decorator\PriceDecorator;
  * Class MinusHundredDecorator
  * @package App\Decorator\PriceDecorator
  */
-final class MinusHundredDecorator implements DecoratorInterface
+final class MinusHundredDecorator extends AbstractPricePriceDecorator
 {
-    /** @var DecoratorInterface */
-    private $decorator;
-
-    /**
-     * @param DecoratorInterface $decorator
-     */
-    public function __construct(DecoratorInterface $decorator = null)
-    {
-        $this->decorator = $decorator;
-    }
-
     /**
      * @param int $totalPrice
      * @return int
