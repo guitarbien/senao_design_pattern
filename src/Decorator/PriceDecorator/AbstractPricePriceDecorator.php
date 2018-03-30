@@ -22,6 +22,14 @@ abstract class AbstractPricePriceDecorator implements PriceDecoratorInterface
     }
 
     /**
+     * @return string
+     */
+    public function getBank(): string
+    {
+        return $this->decorator->getBank();
+    }
+
+    /**
      * @param int $totalPrice
      * @return int
      */

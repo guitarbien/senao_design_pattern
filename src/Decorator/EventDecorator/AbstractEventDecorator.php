@@ -23,6 +23,14 @@ abstract class AbstractEventDecorator implements EventDecorator
     }
 
     /**
+     * @return string
+     */
+    public function getBank(): string
+    {
+        return $this->eventDecorator->getBank();
+    }
+
+    /**
      * @param array $events
      * @return array
      */

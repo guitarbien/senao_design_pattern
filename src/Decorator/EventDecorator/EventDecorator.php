@@ -15,4 +15,9 @@ interface EventDecorator
      * @return array
      */
     public function getEvents(array $events): array;
+
+    /**
+     * @return string
+     */
+    public function getBank(): string;
 }

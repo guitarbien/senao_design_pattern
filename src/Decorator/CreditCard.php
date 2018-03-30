@@ -38,47 +38,22 @@ final class CreditCard
     {
         $order = new Order();
 
-        if ($this->bank === BankType::CTBC) {
-            $totalPrice = (new TwentyPercentOffDecorator(
+        // calculate price
+        $totalPrice = (new TwentyPercentOffDecorator(
                             new MinusHundredDecorator(
-                                new OriginalPricePriceDecorator())))
+                                new OriginalPricePriceDecorator($this->bank))))
                                     ->getPrice($totalPrice);
 
-            $order->setTotalPrice($totalPrice);
+        $order->setTotalPrice($totalPrice);
 
-            $events = (new CouponDecorator(new NullEventDecorator()))->getEvents([]);
-            $order->setEvents($events);
-        }
-
-        if ($this->bank === BankType::TAISHIN) {
-            $totalPrice = (new TwentyPercentOffDecorator(
-                            new OriginalPricePriceDecorator()))
-                                ->getPrice($totalPrice);
-
-            $order->setTotalPrice($totalPrice);
-
-            $events = (new PlusOneDecorator(
+        // handle events
+        $events = (new PlusOneDecorator(
+                    new BonusPointDecorator(
                         new CouponDecorator(
-                            new NullEventDecorator())))
+                            new NullEventDecorator($this->bank)))))
                                 ->getEvents([]);
 
-            $order->setEvents($events);
-        }
-
-        if ($this->bank === BankType::CITI) {
-            $totalPrice = (new MinusHundredDecorator(
-                            new OriginalPricePriceDecorator()))
-                                ->getPrice($totalPrice);
-
-            $order->setTotalPrice($totalPrice);
-
-            $events = (new PlusOneDecorator(
-                        new BonusPointDecorator(
-                            new NullEventDecorator())))
-                                ->getEvents([]);
-
-            $order->setEvents($events);
-        }
+        $order->setEvents($events);
 
         return $order;
     }

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Decorator\PriceDecorator;
 
+use App\Decorator\BankType;
+
 /**
  * Class MinusHundredDecorator
  * @package App\Decorator\PriceDecorator
@@ -16,6 +18,10 @@ final class MinusHundredDecorator extends AbstractPricePriceDecorator
      */
     public function getPrice(int $totalPrice): int
     {
-        return ($totalPrice >= 1000) ? $this->decorator->getPrice($totalPrice) - 100 : $totalPrice;
+        if (in_array($this->getBank(), [BankType::CTBC, BankType::CITI]) && ($totalPrice >= 1000)) {
+            return $this->decorator->getPrice($totalPrice) - 100;
+        }
+
+        return $this->decorator->getPrice($totalPrice);
     }
 }

@@ -15,4 +15,9 @@ interface PriceDecoratorInterface
      * @return int
      */
     public function getPrice(int $totalPrice): int;
+
+    /**
+     * @return string
+     */
+    public function getBank(): string;
 }
