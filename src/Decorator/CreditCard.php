@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Decorator;
 
+use App\Decorator\EventDecorator\BonusPointDecorator;
 use App\Decorator\EventDecorator\CouponDecorator;
 use App\Decorator\EventDecorator\NullEventDecorator;
 use App\Decorator\EventDecorator\PlusOneDecorator;
-use App\Decorator\PriceDecorator\DecoratorInterface;
 use App\Decorator\PriceDecorator\MinusHundredDecorator;
 use App\Decorator\PriceDecorator\OriginalPriceDecorator;
 use App\Decorator\PriceDecorator\TwentyPercentOffDecorator;
@@ -60,6 +60,21 @@ final class CreditCard
 
             $events = (new PlusOneDecorator(
                         new CouponDecorator(
+                            new NullEventDecorator())))
+                                ->getEvents([]);
+
+            $order->setEvents($events);
+        }
+
+        if ($this->bank === BankType::CITI) {
+            $totalPrice = (new MinusHundredDecorator(
+                            new OriginalPriceDecorator()))
+                                ->getPrice($totalPrice);
+
+            $order->setTotalPrice($totalPrice);
+
+            $events = (new PlusOneDecorator(
+                        new BonusPointDecorator(
                             new NullEventDecorator())))
                                 ->getEvents([]);
 

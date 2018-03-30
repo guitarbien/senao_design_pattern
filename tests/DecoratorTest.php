@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Decorator\BankType;
 use App\Decorator\Events\Coupon;
 use App\Decorator\Events\PlusOne;
+use App\Decorator\Events\BonusPoint;
 use PHPUnit\Framework\TestCase;
 use App\Decorator\CreditCard;
 
@@ -38,6 +39,22 @@ class DecoratorTest extends TestCase
 
         static::assertTrue(collect($order->getEvents())->contains(function($instance) {
             return $instance instanceof Coupon;
+        }));
+    }
+
+    public function test_刷花旗卡滿千送百紅利點數一百點加一元多一件()
+    {
+        $creditCard = new CreditCard(BankType::CITI);
+        $order = $creditCard->checkOut(1100);
+
+        static::assertEquals($order->getTotalPrice(), 1000);
+
+        static::assertTrue(collect($order->getEvents())->contains(function($instance) {
+            return $instance instanceof BonusPoint;
+        }));
+
+        static::assertTrue(collect($order->getEvents())->contains(function($instance) {
+            return $instance instanceof PlusOne;
         }));
     }
 }
