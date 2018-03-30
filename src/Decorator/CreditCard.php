@@ -6,6 +6,7 @@ namespace App\Decorator;
 
 use App\Decorator\EventDecorator\CouponDecorator;
 use App\Decorator\EventDecorator\NullEventDecorator;
+use App\Decorator\EventDecorator\PlusOneDecorator;
 use App\Decorator\PriceDecorator\DecoratorInterface;
 use App\Decorator\PriceDecorator\MinusHundredDecorator;
 use App\Decorator\PriceDecorator\OriginalPriceDecorator;
@@ -19,9 +20,6 @@ final class CreditCard
 {
     /** @var string */
     private $bank;
-
-    /** @var DecoratorInterface */
-    private $decorator;
 
     /**
      * CreditCard constructor.
@@ -50,6 +48,21 @@ final class CreditCard
 
             // 送百元折價券
             $events = (new CouponDecorator(new NullEventDecorator()))->getEvents([]);
+            $order->setEvents($events);
+        }
+
+        if ($this->bank === BankType::TAISHIN) {
+            $totalPrice = (new TwentyPercentOffDecorator(
+                            new OriginalPriceDecorator()))
+                                ->getPrice($totalPrice);
+
+            $order->setTotalPrice($totalPrice);
+
+            $events = (new PlusOneDecorator(
+                        new CouponDecorator(
+                            new NullEventDecorator())))
+                                ->getEvents([]);
+
             $order->setEvents($events);
         }
 

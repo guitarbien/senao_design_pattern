@@ -30,6 +30,9 @@ final class PlusOneDecorator implements EventDecorator
      */
     public function getEvents(array $events): array
     {
-        $events[] = new PlusOne();
+        $currentEvents = $this->eventDecorator->getEvents($events);
+        $currentEvents[] = new PlusOne();
+
+        return $currentEvents;
     }
 }

@@ -21,12 +21,4 @@ final class Coupon
     {
         $this->couponPrice = $couponPrice;
     }
-
-    /**
-     * @return int
-     */
-    public function getCouponPrice(): int
-    {
-        return $this->couponPrice;
-    }
 }

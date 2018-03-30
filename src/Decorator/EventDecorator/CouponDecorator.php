@@ -30,8 +30,9 @@ final class CouponDecorator implements EventDecorator
      */
     public function getEvents(array $events): array
     {
-        $events[] = new Coupon(100);
+        $currentEvents = $this->eventDecorator->getEvents($events);
+        $currentEvents[] = new Coupon(100);
 
-        return $events;
+        return $currentEvents;
     }
 }
