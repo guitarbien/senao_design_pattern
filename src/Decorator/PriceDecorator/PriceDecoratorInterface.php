@@ -11,10 +11,10 @@ namespace App\Decorator\PriceDecorator;
 interface PriceDecoratorInterface
 {
     /**
-     * @param int $totalPrice
+     * @param int $currentPrice
      * @return int
      */
-    public function getPrice(int $totalPrice): int;
+    public function getPrice(int $currentPrice): int;
 
     /**
      * @return string

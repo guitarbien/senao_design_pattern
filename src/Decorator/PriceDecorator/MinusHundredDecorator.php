@@ -13,15 +13,16 @@ use App\Decorator\BankType;
 final class MinusHundredDecorator extends AbstractPricePriceDecorator
 {
     /**
-     * @param int $totalPrice
+     * @param int $currentPrice
      * @return int
      */
-    public function getPrice(int $totalPrice): int
+    public function getPrice(int $currentPrice): int
     {
+        $totalPrice = $this->decorator->getPrice($currentPrice);
         if (in_array($this->getBank(), [BankType::CTBC, BankType::CITI]) && ($totalPrice >= 1000)) {
-            return $this->decorator->getPrice($totalPrice) - 100;
+            return $totalPrice - 100;
         }
 
-        return $this->decorator->getPrice($totalPrice);
+        return $totalPrice;
     }
 }

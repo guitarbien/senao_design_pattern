@@ -30,8 +30,8 @@ abstract class AbstractPricePriceDecorator implements PriceDecoratorInterface
     }
 
     /**
-     * @param int $totalPrice
+     * @param int $currentPrice
      * @return int
      */
-    abstract public function getPrice(int $totalPrice): int;
+    abstract public function getPrice(int $currentPrice): int;
 }

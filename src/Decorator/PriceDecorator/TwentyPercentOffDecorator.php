@@ -16,12 +16,13 @@ final class TwentyPercentOffDecorator extends AbstractPricePriceDecorator
      * @param int $totalPrice
      * @return int
      */
-    public function getPrice(int $totalPrice): int
+    public function getPrice(int $currentPrice): int
     {
+        $totalPrice = $this->decorator->getPrice($currentPrice);
         if (in_array($this->getBank(), [BankType::CTBC, BankType::TAISHIN])) {
-            return (int)($this->decorator->getPrice($totalPrice) * 0.8);
+            return (int)($totalPrice * 0.8);
         }
 
-        return ($this->decorator->getPrice($totalPrice));
+        return $totalPrice;
     }
 }
