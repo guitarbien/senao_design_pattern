@@ -8,6 +8,9 @@ use App\Decorator\EventDecorator\BonusPointDecorator;
 use App\Decorator\EventDecorator\CouponDecorator;
 use App\Decorator\EventDecorator\NullEventDecorator;
 use App\Decorator\EventDecorator\PlusOneDecorator;
+use App\Decorator\Functional\PriceMinusHundred;
+use App\Decorator\Functional\PriceOriginal;
+use App\Decorator\Functional\PriceTwentyPercentOff;
 use App\Decorator\PriceDecorator\MinusHundredDecorator;
 use App\Decorator\PriceDecorator\OriginalPricePriceDecorator;
 use App\Decorator\PriceDecorator\TwentyPercentOffDecorator;
@@ -54,6 +57,25 @@ final class CreditCard
                                 ->getEvents([]);
 
         $order->setEvents($events);
+
+        return $order;
+    }
+
+    /**
+     * Functional version
+     * @param int $totalPrice
+     * @return Order
+     */
+    public function functionalCheckOut(int $totalPrice): Order
+    {
+        $order = new Order();
+
+        // calculate price
+        $originalPriceFn     = PriceOriginal::discount();
+        $minusHundredPriceFn = PriceMinusHundred::discount($originalPriceFn);
+        $twentyPercentOffFn  = PriceTwentyPercentOff::discount($minusHundredPriceFn);
+
+        $order->setTotalPrice($twentyPercentOffFn($totalPrice));
 
         return $order;
     }
