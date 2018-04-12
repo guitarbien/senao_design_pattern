@@ -6,7 +6,7 @@ namespace App\Decorator;
 
 use App\Decorator\EventDecorator\BonusPointDecorator;
 use App\Decorator\EventDecorator\CouponDecorator;
-use App\Decorator\EventDecorator\NullEventDecorator;
+use App\Decorator\EventDecorator\OriginalEventDecorator;
 use App\Decorator\EventDecorator\PlusOneDecorator;
 use App\Decorator\Functional\PriceMinusHundred;
 use App\Decorator\Functional\PriceOriginal;
