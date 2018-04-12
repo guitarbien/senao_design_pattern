@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Decorator\EventDecorator;
 
 /**
- * Class NullEventDecorator
+ * Class OriginalEventDecorator
  * @package App\Decorator\EventDecorator
  */
-final class NullEventDecorator implements EventDecorator
+final class OriginalEventDecorator implements EventDecorator
 {
     /** @var string */
     private $bank;
