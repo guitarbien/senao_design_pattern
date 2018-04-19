@@ -8,6 +8,7 @@ use App\Composite\Cart;
 use App\Composite\Product\MacBookPro;
 use App\Composite\Product\IPadAir;
 use App\Composite\Product\AppleCombo;
+use App\Composite\Product\NintendoSwitch;
 
 /**
  * Class CompositeTest
@@ -64,5 +65,18 @@ class CompositeTest extends TestCase
 
         // assert
         static::assertEquals(72000, $totalPrice);
+    }
+
+    public function test_購買任天堂Switch花費10000()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new NintendoSwitch());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(10000, $totalPrice);
     }
 }
