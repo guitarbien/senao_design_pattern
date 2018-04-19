@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Composite\Product;
 
+use App\Composite\ProductCalculateInterface;
+
 /**
  * Class AppleCombo
  * @package App\Composite\Product
@@ -16,14 +18,19 @@ final class AppleCombo implements ProductInterface
     /** @var ProductInterface[] */
     private $products;
 
+    /** @var ProductCalculateInterface */
+    private $calculator;
+
     /**
      * AppleCombo constructor.
+     * @param ProductCalculateInterface $calculator
      */
-    public function __construct()
+    public function __construct(ProductCalculateInterface $calculator)
     {
-        $this->products[] = new MacBookPro();
-        $this->products[] = new IPadAir();
-        $this->products[] = new AppleWatch();
+        $this->calculator = $calculator;
+        $this->products[] = new MacBookPro($calculator);
+        $this->products[] = new IPadAir($calculator);
+        $this->products[] = new AppleWatch($calculator);
     }
 
     /**
@@ -31,8 +38,6 @@ final class AppleCombo implements ProductInterface
      */
     public function getPrice(): int
     {
-        return (int)(collect($this->products)->sum(function(ProductInterface $product) {
-            return $product->getPrice();
-        }) * self::DISCOUNT_RATE);
+        return (int)($this->calculator->calculateSum($this->products) * self::DISCOUNT_RATE);
     }
 }

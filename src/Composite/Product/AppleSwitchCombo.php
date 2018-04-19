@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Composite\Product;
 
+use App\Composite\ProductCalculateInterface;
+
 /**
  * Class AppleSwitchCombo
  * @package App\Composite\Product
@@ -16,13 +18,17 @@ final class AppleSwitchCombo implements ProductInterface
     /** @var ProductInterface[] */
     private $products;
 
+    /** @var ProductCalculateInterface */
+    private $calculator;
+
     /**
      * AppleSwitchCombo constructor.
      */
-    public function __construct()
+    public function __construct(ProductCalculateInterface $calculator)
     {
-        $this->products[] = new AppleCombo();
-        $this->products[] = new SwitchCombo();
+        $this->calculator = $calculator;
+        $this->products[] = new AppleCombo($calculator);
+        $this->products[] = new SwitchCombo($calculator);
     }
 
     /**

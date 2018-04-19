@@ -15,6 +15,18 @@ final class Cart
     /** @var ProductInterface[] */
     private $products;
 
+    /** @var ProductCalculateInterface */
+    private $calculator;
+
+    /**
+     * Cart constructor.
+     * @param ProductCalculateInterface $calculator
+     */
+    public function __construct(ProductCalculateInterface $calculator)
+    {
+        $this->calculator = $calculator;
+    }
+
     /**
      * @param ProductInterface $product
      */
@@ -28,8 +40,6 @@ final class Cart
      */
     public function calculate(): int
     {
-        return collect($this->products)->sum(function(ProductInterface $product) {
-            return $product->getPrice();
-        });
+        return $this->calculator->calculateSum($this->products);
     }
 }
