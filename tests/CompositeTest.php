@@ -9,6 +9,7 @@ use App\Composite\Product\MacBookPro;
 use App\Composite\Product\IPadAir;
 use App\Composite\Product\AppleCombo;
 use App\Composite\Product\NintendoSwitch;
+use App\Composite\Product\LengendOfZelda;
 
 /**
  * Class CompositeTest
@@ -78,5 +79,18 @@ class CompositeTest extends TestCase
 
         // assert
         static::assertEquals(10000, $totalPrice);
+    }
+
+    public function test_購買薩爾達傳說花費2000()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new LengendOfZelda());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(2000, $totalPrice);
     }
 }
