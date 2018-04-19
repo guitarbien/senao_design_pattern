@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use App\Composite\Cart;
 use App\Composite\Product\MacBookPro;
 use App\Composite\Product\IPadAir;
+use App\Composite\Product\AppleCombo;
 
 /**
  * Class CompositeTest
@@ -50,5 +51,18 @@ class CompositeTest extends TestCase
 
         // assert
         static::assertEquals(10000, $totalPrice);
+    }
+
+    public function test_購買AppleCombo花費72000()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new AppleCombo());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(72000, $totalPrice);
     }
 }
