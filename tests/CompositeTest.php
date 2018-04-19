@@ -57,6 +57,21 @@ class CompositeTest extends TestCase
         static::assertEquals(10000, $totalPrice);
     }
 
+    public function test_分開購買Apple三項產品花費80000()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new MacBookPro());
+        $cart->addProduct(new IPadAir());
+        $cart->addProduct(new AppleWatch());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(80000, $totalPrice);
+    }
+
     public function test_購買AppleCombo花費72000()
     {
         // arrange
@@ -94,6 +109,20 @@ class CompositeTest extends TestCase
 
         // assert
         static::assertEquals(2000, $totalPrice);
+    }
+
+    public function test_分開購買Switch兩項產品花費12000()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new NintendoSwitch());
+        $cart->addProduct(new LengendOfZelda());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(12000, $totalPrice);
     }
 
     public function test_購買SwitchCombo花費10800()

@@ -12,15 +12,15 @@ use App\Composite\Product\ProductInterface;
  */
 final class Cart
 {
-    /** @var ProductInterface */
-    private $product;
+    /** @var ProductInterface[] */
+    private $products;
 
     /**
      * @param ProductInterface $product
      */
     public function addProduct(ProductInterface $product): void
     {
-        $this->product = $product;
+        $this->products[] = $product;
     }
 
     /**
@@ -28,6 +28,8 @@ final class Cart
      */
     public function calculate(): int
     {
-        return $this->product->getPrice();
+        return collect($this->products)->sum(function(ProductInterface $product) {
+            return $product->getPrice();
+        });
     }
 }
