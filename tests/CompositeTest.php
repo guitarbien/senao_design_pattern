@@ -11,6 +11,7 @@ use App\Composite\Product\AppleCombo;
 use App\Composite\Product\NintendoSwitch;
 use App\Composite\Product\LengendOfZelda;
 use App\Composite\Product\SwitchCombo;
+use App\Composite\Product\AppleSwitchCombo;
 
 /**
  * Class CompositeTest
@@ -106,5 +107,18 @@ class CompositeTest extends TestCase
 
         // assert
         static::assertEquals(10800, $totalPrice);
+    }
+
+    public function test_購買AppleSiwtchCombo花費81800()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new AppleSwitchCombo());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(81800, $totalPrice);
     }
 }
