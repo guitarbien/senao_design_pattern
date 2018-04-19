@@ -10,7 +10,9 @@
     <testsuite name="default">
         <directory suffix="Test.php">tests</directory>
     </testsuite>
-
+    <testsuite name="Composite">
+        <file>tests/CompositeTest.php</file>
+    </testsuite>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
