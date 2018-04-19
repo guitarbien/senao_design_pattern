@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Composite;
 
-use App\Composite\Product\MacBookPro;
+use App\Composite\Product\ProductInterface;
 
 /**
  * Class Cart
@@ -12,11 +12,15 @@ use App\Composite\Product\MacBookPro;
  */
 final class Cart
 {
+    /** @var ProductInterface */
+    private $product;
+
     /**
-     * @param MacBookPro $product
+     * @param ProductInterface $product
      */
-    public function addProduct(MacBookPro $product): void
+    public function addProduct(ProductInterface $product): void
     {
+        $this->product = $product;
     }
 
     /**
@@ -24,6 +28,6 @@ final class Cart
      */
     public function calculate(): int
     {
-        return 60000;
+        return $this->product->getPrice();
     }
 }
