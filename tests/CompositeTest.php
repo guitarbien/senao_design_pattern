@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Composite\Product\AppleWatch;
 use PHPUnit\Framework\TestCase;
 use App\Composite\Cart;
 use App\Composite\Product\MacBookPro;
@@ -30,6 +31,19 @@ class CompositeTest extends TestCase
         // arrange
         $cart = new Cart();
         $cart->addProduct(new IPadAir());
+
+        // act
+        $totalPrice = $cart->calculate();
+
+        // assert
+        static::assertEquals(10000, $totalPrice);
+    }
+
+    public function test_購買AppleWatch花費10000()
+    {
+        // arrange
+        $cart = new Cart();
+        $cart->addProduct(new AppleWatch());
 
         // act
         $totalPrice = $cart->calculate();
