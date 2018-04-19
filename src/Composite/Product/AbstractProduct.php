@@ -7,10 +7,10 @@ namespace App\Composite\Product;
 use App\Composite\ProductCalculateInterface;
 
 /**
- * Class LengendOfZelda
+ * Class AbstractProduct
  * @package App\Composite\Product
  */
-final class LengendOfZelda implements ProductInterface
+abstract class AbstractProduct implements ProductInterface
 {
     /** @var ProductCalculateInterface */
     private $calculator;
@@ -25,10 +25,15 @@ final class LengendOfZelda implements ProductInterface
     }
 
     /**
+     * @return ProductCalculateInterface
+     */
+    protected function getCalculator(): ProductCalculateInterface
+    {
+        return $this->calculator;
+    }
+
+    /**
      * @return int
      */
-    public function getPrice(): int
-    {
-        return $this->calculator->calculateSum([new PriceTag(2000)]);
-    }
+    abstract public function getPrice(): int;
 }

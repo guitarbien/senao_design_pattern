@@ -10,7 +10,7 @@ use App\Composite\ProductCalculateInterface;
  * Class AppleSwitchCombo
  * @package App\Composite\Product
  */
-final class AppleSwitchCombo implements ProductInterface
+final class AppleSwitchCombo extends AbstractProduct
 {
     /** @var int 折扣金額 */
     const DISCOUNT_PRICE = 1000;
@@ -18,15 +18,13 @@ final class AppleSwitchCombo implements ProductInterface
     /** @var ProductInterface[] */
     private $products;
 
-    /** @var ProductCalculateInterface */
-    private $calculator;
-
     /**
      * AppleSwitchCombo constructor.
      */
     public function __construct(ProductCalculateInterface $calculator)
     {
-        $this->calculator = $calculator;
+        parent::__construct($calculator);
+
         $this->products[] = new AppleCombo($calculator);
         $this->products[] = new SwitchCombo($calculator);
     }
@@ -36,8 +34,6 @@ final class AppleSwitchCombo implements ProductInterface
      */
     public function getPrice(): int
     {
-        return collect($this->products)->sum(function(ProductInterface $product) {
-            return $product->getPrice();
-        }) - self::DISCOUNT_PRICE;
+        return $this->getCalculator()->calculateSum($this->products) - self::DISCOUNT_PRICE;
     }
 }

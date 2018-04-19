@@ -10,7 +10,7 @@ use App\Composite\ProductCalculateInterface;
  * Class AppleCombo
  * @package App\Composite\Product
  */
-final class AppleCombo implements ProductInterface
+final class AppleCombo extends AbstractProduct
 {
     /** @var float 折扣 */
     const DISCOUNT_RATE = 0.9;
@@ -18,16 +18,14 @@ final class AppleCombo implements ProductInterface
     /** @var ProductInterface[] */
     private $products;
 
-    /** @var ProductCalculateInterface */
-    private $calculator;
-
     /**
      * AppleCombo constructor.
      * @param ProductCalculateInterface $calculator
      */
     public function __construct(ProductCalculateInterface $calculator)
     {
-        $this->calculator = $calculator;
+        parent::__construct($calculator);
+
         $this->products[] = new MacBookPro($calculator);
         $this->products[] = new IPadAir($calculator);
         $this->products[] = new AppleWatch($calculator);
@@ -38,6 +36,6 @@ final class AppleCombo implements ProductInterface
      */
     public function getPrice(): int
     {
-        return (int)($this->calculator->calculateSum($this->products) * self::DISCOUNT_RATE);
+        return (int)($this->getCalculator()->calculateSum($this->products) * self::DISCOUNT_RATE);
     }
 }

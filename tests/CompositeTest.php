@@ -10,7 +10,7 @@ use App\Composite\Product\MacBookPro;
 use App\Composite\Product\IPadAir;
 use App\Composite\Product\AppleCombo;
 use App\Composite\Product\NintendoSwitch;
-use App\Composite\Product\LengendOfZelda;
+use App\Composite\Product\LegendOfZelda;
 use App\Composite\Product\SwitchCombo;
 use App\Composite\Product\AppleSwitchCombo;
 
@@ -110,7 +110,7 @@ class CompositeTest extends TestCase
         // arrange
         $calculator = new Calculator();
         $cart = new Cart($calculator);
-        $cart->addProduct(new LengendOfZelda($calculator));
+        $cart->addProduct(new LegendOfZelda($calculator));
 
         // act
         $totalPrice = $cart->calculate();
@@ -125,7 +125,7 @@ class CompositeTest extends TestCase
         $calculator = new Calculator();
         $cart = new Cart($calculator);
         $cart->addProduct(new NintendoSwitch($calculator));
-        $cart->addProduct(new LengendOfZelda($calculator));
+        $cart->addProduct(new LegendOfZelda($calculator));
 
         // act
         $totalPrice = $cart->calculate();

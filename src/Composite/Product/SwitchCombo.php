@@ -10,7 +10,7 @@ use App\Composite\ProductCalculateInterface;
  * Class SwitchCombo
  * @package App\Composite\Product
  */
-final class SwitchCombo implements ProductInterface
+final class SwitchCombo extends AbstractProduct
 {
     /** @var float 折扣率 */
     const DISCOUNT_RATE = 0.9;
@@ -18,18 +18,16 @@ final class SwitchCombo implements ProductInterface
     /** @var ProductInterface[] */
     private $products;
 
-    /** @var ProductCalculateInterface */
-    private $calculator;
-
     /**
      * SwitchCombo constructor.
      * @param ProductCalculateInterface $calculator
      */
     public function __construct(ProductCalculateInterface $calculator)
     {
-        $this->calculator = $calculator;
+        parent::__construct($calculator);
+
         $this->products[] = new NintendoSwitch($calculator);
-        $this->products[] = new LengendOfZelda($calculator);
+        $this->products[] = new LegendOfZelda($calculator);
     }
 
     /**
@@ -37,8 +35,6 @@ final class SwitchCombo implements ProductInterface
      */
     public function getPrice(): int
     {
-        return (int)(collect($this->products)->sum(function(ProductInterface $product) {
-            return $product->getPrice();
-        }) * self::DISCOUNT_RATE);
+        return (int)($this->getCalculator()->calculateSum($this->products) * self::DISCOUNT_RATE);
     }
 }
